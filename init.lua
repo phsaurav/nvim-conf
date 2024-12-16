@@ -1,6 +1,5 @@
-require("ph")
-vim.opt.clipboard:append("unnamedplus")
-vim.opt.mouse = "a"
+require("ph.core")
+require("ph.lazy")
 
 color = color or 'ayu'
 
