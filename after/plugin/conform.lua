@@ -20,4 +20,7 @@ conform.setup({
         timeout_ms = 500,
         lsp_format = "fallback",
     },
+    formatters = {
+        go = { "gofmt", "goimports_revisor" },
+    },
 })

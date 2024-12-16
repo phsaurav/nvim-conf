@@ -97,3 +97,13 @@ vim.keymap.set('n', '<C-s>', function()
         vim.ui.input({ prompt = 'filename: ' }, save_file)
     end
 end)
+
+local function quickfix()
+    vim.lsp.buf.code_action({
+        filter = function(a) return a.isPreferred end,
+        apply = true
+    })
+end
+
+vim.keymap.set('n', '<leader>fx', quickfix, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>wf', "<cmd>lua vim.diagnostic.open_float()<CR>", { noremap = true, silent = true })
