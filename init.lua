@@ -17,7 +17,7 @@ require('ayu').setup({
         CursorColumn = { bg = "None" },
         WhichKeyFloat = { bg = "None" },
         VertSplit = { fg = "NONE", bg = "NONE" },
-        LineNr = { fg = "#4f3a29", bg = "NONE" },
+        LineNr = { fg = "#5c422e", bg = "NONE" },
         CursorLineNr = { fg = "#ffaf00", bg = "NONE" },
     },
 })

@@ -1,3 +1,5 @@
+local map = vim.api.nvim_set_keymap
+
 vim.g.mapleader = " "
 vim.keymap.set("i", "kj", "<Esc>")
 vim.keymap.set("n", "<leader>eo", vim.cmd.Ex)
@@ -14,13 +16,17 @@ vim.keymap.set("n", "<leader>q", ":q<CR>")
 vim.keymap.set("n", "<leader>s", ":vsplit<CR>")
 vim.keymap.set("n", "gh", "_")
 vim.keymap.set("n", "gl", "$")
-vim.keymap.set("n", "g;", "%")
 vim.keymap.set("n", "go", "<C-o>")
 vim.keymap.set("n", "gi", "<C-i>")
 vim.keymap.set("n", "<C-v>", '"+gP', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'L', '16kzz', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'H', '16jzz', { noremap = true, silent = true })
+map('n', 'gsw', [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], { noremap = true, silent = false })
+-- Move to the right split with 'g-j'
+vim.keymap.set('n', 'gk', '<C-w>l', { noremap = true, silent = true })
 
+-- Move to the left split with 'g-k'
+vim.keymap.set('n', 'gj', '<C-w>h', { noremap = true, silent = true })
 
 -- Visual mode mappings
 vim.keymap.set("v", "<Tab>", ">gv")
@@ -32,6 +38,12 @@ vim.keymap.set("x", "<leader>c", "c{}<Esc>P")
 vim.keymap.set("x", "<leader>[", "c[]<Esc>P")
 vim.keymap.set("x", "<leader>'", "c''<Esc>P")
 vim.keymap.set("x", "<leader>q", 'c""<Esc>P')
+vim.api.nvim_set_keymap('v', 'gsw', [[y:%s/<C-r>"//g<Left><Left>]], { noremap = true, silent = false })
+
+-- Common mode mappings
+vim.keymap.set({ "n", "v" }, "g;", "%")
+vim.keymap.set({ 'n', 'i', 'v', 'c', 't' }, '<C-f>', '<Nop>', { silent = true })
+
 
 function Save_file()
     local modifiable = vim.api.nvim_buf_get_option(0, 'modifiable')

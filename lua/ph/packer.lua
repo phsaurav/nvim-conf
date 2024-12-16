@@ -21,8 +21,6 @@ return require('packer').startup(function(use)
 
     use { 'ThePrimeagen/harpoon' }
 
-    use({ 'hrsh7th/nvim-cmp' })
-    use({ 'hrsh7th/cmp-nvim-lsp' })
     use {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
@@ -44,16 +42,17 @@ return require('packer').startup(function(use)
         "L3MON4D3/LuaSnip",
         requires = {
             "saadparwaiz1/cmp_luasnip",
-            "rafamadriz/friendly-snippets",
         },
         after = "nvim-cmp", -- Ensure LuaSnip loads after nvim-cmp
     }
 
     use {
-        "hrsh7th/nvim-cmp",
-        config = function()
-            require("plugins.cmp") -- Move the config to a separate file
-        end,
+        'hrsh7th/nvim-cmp', -- Completion framework
+        -- requires = {
+            -- 'tzachar/cmp-tabnine', -- Tabnine completion
+            -- run = './install.sh', -- Install Tabnine binary
+            -- requires = 'hrsh7th/nvim-cmp'
+        -- }
     }
     use {
         'nvim-lualine/lualine.nvim',
@@ -62,4 +61,17 @@ return require('packer').startup(function(use)
     use {
         'nvim-tree/nvim-tree.lua',
     }
+    use {
+        'jiangmiao/auto-pairs',
+    }
+
+    -- use { 'codota/tabnine-nvim', run = "./dl_binaries.sh" }
+
+    use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+    }
 end)
+
