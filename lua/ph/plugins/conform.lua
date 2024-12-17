@@ -4,6 +4,10 @@ return {
 	config = function()
 		local conform = require("conform")
 
+		vim.opt.tabstop = 2 -- Number of spaces for a tab
+		vim.opt.shiftwidth = 2 -- Indentation size
+		vim.opt.expandtab = true -- Use spaces instead of tabs
+
 		-- Automatically format on save
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			pattern = "*",
@@ -18,6 +22,11 @@ return {
 				lsp_fallback = true,
 				async = false,
 				timeout_ms = 500,
+			})
+			-- Add a message upon format completion
+			vim.notify("Formatting complete", vim.log.levels.INFO, {
+				title = "Conform.nvim",
+				timeout = 2000,
 			})
 		end, { desc = "Format file or range (in visual mode)" })
 
